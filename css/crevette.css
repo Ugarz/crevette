@@ -1,3 +1,5 @@
-#page{
-  background-color: red;
+#page {
+  display: flex; /* or inline-flex */
+  flex-direction: row;
+  width: 100%;
 }

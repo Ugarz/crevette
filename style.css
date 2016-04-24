@@ -771,11 +771,7 @@ a:active {
 /*--------------------------------------------------------------
 ## Posts and pages
 --------------------------------------------------------------*/
-#page {
-  display: flex; /* or inline-flex */
-  flex-direction: row;
-  width: 100%;
-}
+
 .sticky {
 	display: block;
 }

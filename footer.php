@@ -15,6 +15,7 @@
 
 </div><!-- #page -->
 <footer id="colophon" class="site-footer" role="contentinfo">
+  <?php wp_nav_menu( array( 'theme_location' => 'secondary', 'menu_id' => 'footer-menu' ) ); ?>
 	<div class="site-info">
 		<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'crevetterose' ) ); ?>"><?php printf( esc_html__( 'Proudly powered by %s', 'crevetterose' ), 'WordPress' ); ?></a>
 		<span class="sep"> | </span>

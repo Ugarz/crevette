@@ -9,13 +9,6 @@
 
 /*
 	===============================
-		MY ACTIONS
-	===============================
-*/
-remove_action('wp_head', 'wp_generator');
-
-/*
-	===============================
 		ADD CUSTOM POST TYPE IN LOOP
 	===============================
 */
@@ -28,16 +21,6 @@ function search_filter($query) {
 }
 
 add_action('pre_get_posts','search_filter');
-/*
-	===============================
-		INCLUDE JS AND CSS
-	===============================
-*/
-/*function settingsCrevette_script_enqueue(){
-	wp_enqueue_style('styleCrevette', get_template_directory_uri() . '/css/crevette.css', array(), '1.0.0', 'all');
-	wp_enqueue_script('scriptCrevette', get_template_directory_uri() . '/js/crevette.js', array(), '1.0.0', true);
-}
-add_action('wp_enqueue_script', 'settingsCrevette_script_enqueue');*/
 
 /*
 	===============================
@@ -112,7 +95,8 @@ function crevetterose_setup() {
 
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
-
+	// Remove the wordpress version
+	remove_action('wp_head', 'wp_generator');
 	/*
 	 * Let WordPress manage the document title.
 	 * By adding theme support, we declare that this theme does not use a
@@ -128,10 +112,12 @@ function crevetterose_setup() {
 	 */
 	add_theme_support( 'post-thumbnails' );
 
+	// Add the menus handler
+	add_theme_support( 'menus' );
+
 	// This theme uses wp_nav_menu() in one location.
-	register_nav_menus( array(
-		'primary' => esc_html__( 'Primary', 'crevetterose' ),
-	) );
+	register_nav_menus( array('primary' => esc_html__( 'Navigation principale', 'Le menu général')));
+	register_nav_menus( array('secondary' => esc_html__( 'Navigation footer', 'Le menu du footer')));
 
 	/*
 	 * Switch default core markup for search form, comment form, and comments
@@ -204,7 +190,6 @@ function crevetterose_scripts() {
 	wp_enqueue_style('styleCrevette', get_template_directory_uri() . '/css/crevette.css', array(), '1.0.0', 'all');
 	wp_enqueue_script('scriptCrevette', get_template_directory_uri() . '/js/crevette.js', array(), '1.0.0', true);
 	wp_enqueue_script( 'crevetterose-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
-
 	wp_enqueue_script( 'crevetterose-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
