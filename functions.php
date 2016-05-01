@@ -9,21 +9,6 @@
 
 /*
 	===============================
-		ADD CUSTOM POST TYPE IN LOOP
-	===============================
-*/
-function search_filter($query) {
-  if ( !is_admin() && $query->is_main_query() ) {
-    if ($query->is_search) {
-      $query->set('post_type', array( 'post', 'Protfolio' ) );
-    }
-  }
-}
-
-add_action('pre_get_posts','search_filter');
-
-/*
-	===============================
 		CUSTOM POST TYPE
 		https://youtu.be/vSM7w3zzlSU
 	===============================
@@ -68,7 +53,20 @@ function settingsCrevette_post_type(){
 }
 add_action('init', 'settingsCrevette_post_type');
 
+/*
+	===============================
+		ADD CPT IN MAIN LOOP
+	===============================
+*/
 
+function get_settingsCrevette_post_type( $query ) {
+
+	if ( ( is_home() && $query->is_main_query() ) || is_feed() )
+		$query->set( 'post_type', array( 'post', 'page', 'album', 'movie', 'portfolio' ) );
+
+	return $query;
+}
+add_filter( 'pre_get_posts', 'get_settingsCrevette_post_type' );
 
 /*
 	===============================
