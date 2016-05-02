@@ -26,17 +26,34 @@ body, html {
 #page #content{
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   width: 100%;
 }
 article {
-  max-width:350px; 
+  border: 1px solid lightcoral;
+  max-width:350px;
   overflow: hidden;
+}
+.toto-main{
+  display: flex;
+  flex: column;
+  width:100%;
+  flex-wrap: wrap;
+  background-color: lightcoral;
+}
+.toto-article{
+  width: 250px;
+  background-color: lightblue;
+}
+.toto-main,
+.toto-article{
+  border: .5px dashed;
+
 }
 
 [id*="post-"] {
   margin: 0;
   padding: 0;
-  background: #E6E6E6;
   text-align: center;
 }
 
