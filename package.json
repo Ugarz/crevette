@@ -1,0 +1,46 @@
+{
+  "name": "crevette",
+  "private": true,
+  "version": "1.0.0",
+  "description": "a personnal theme, handled by node webpack",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test",
+    "dev": "rimraf ./dist && ./node_modules/.bin/webpack --config webpack.dev.config.js",
+    "build": "rimraf ./dist && ./node_modules/.bin/webpack --config webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ugarz/crevette.git"
+  },
+  "keywords": [
+    "wordpress",
+    "node",
+    "theme",
+    "webpack"
+  ],
+  "author": "ugo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ugarz/crevette/issues"
+  },
+  "homepage": "https://github.com/Ugarz/crevette#readme",
+  "dependencies": {
+    "gsap": "^1.18.4",
+    "normalize.css": "^4.1.1"
+  },
+  "devDependencies": {
+    "css-loader": "^0.23.1",
+    "eslint": "^2.10.2",
+    "eslint-loader": "^1.3.0",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.8.5",
+    "json-loader": "^0.5.4",
+    "node-sass": "^3.7.0",
+    "rimraf": "^2.5.2",
+    "sass-loader": "^3.2.0",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
+  }
+}
