@@ -4,12 +4,13 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = {
     // The standard entry point and output config
     entry: {
-        cssBase: "./css",
-        cssTheme: "./css"
+        cssBase: "./src/css",
+        cssTheme: "./src/css"
     },
     output: {
         path: path.join(__dirname, "dist"),
-        filename: "[name].bundle.js",
+        filename: "/js/[name].bundle.js",
+        publicPath: "/assets/",
         chunkFilename: "[id].js"
     },
     module: {
@@ -30,7 +31,7 @@ module.exports = {
     },
     // Use the plugin to specify the resulting filename (and add needed behavior to the compiler)
     plugins: [
-        new ExtractTextPlugin("[name].css", {
+        new ExtractTextPlugin("/css/[name].css", {
             allChunks: true
         })
     ]
