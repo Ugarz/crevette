@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Document</title>
+  <title><?php wp_title();?> - Options</title>
 </head>
 <body>
   <h1>Options du thème <?php bloginfo('name');?></h1>
+  
   <p class="descritpion">Cette page permet de gérer les options paramétrables du thème !</p>
   
   <?php settings_errors();?>

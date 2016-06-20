@@ -31,18 +31,17 @@ function crevette_theme_css_settings(){
 }
 // Bundle functions of custom admin page
 function crevette_custom_settings(){
-  register_setting( 'crevette-settings-group', 'first_name');
-  register_setting( 'crevette-settings-group', 'last_name');
+  register_setting( 'crevette-settings-group', 'full_name');
   register_setting( 'crevette-settings-group', 'twitter_account', 'crevette_sanitize_twitter_account');
   register_setting( 'crevette-settings-group', 'devianart_account');
   register_setting( 'crevette-settings-group', 'facebook_account');
 
-  add_settings_section( 'crevette_sidebar-options', 'Sidebar Options', 'crevette_sidebar_options', 'crevette_theme_settings' );
+  add_settings_section( 'crevette_sidebar_options', 'Sidebar Options', 'crevette_sidebar_options', 'crevette_theme_settings' );
 
-  add_settings_field( 'sidebar-name', 'Nom complet', 'crevette_sidebar_name', 'crevette_theme_settings', 'crevette_sidebar-options');
-  add_settings_field( 'sidebar-twitter', 'Compte Twitter', 'crevette_sidebar_twitter', 'crevette_theme_settings', 'crevette_sidebar-options');
-  add_settings_field( 'sidebar-facebook', 'Compte Facebook', 'crevette_sidebar_facebook', 'crevette_theme_settings', 'crevette_sidebar-options');
-  add_settings_field( 'sidebar-devianart', 'Compte Deviant Art', 'crevette_sidebar_devianart', 'crevette_theme_settings', 'crevette_sidebar-options');
+  add_settings_field( 'full_name', 'Nom complet', 'crevette_sidebar_name', 'crevette_theme_settings', 'crevette_sidebar_options');
+  add_settings_field( 'sidebar-twitter', 'Compte Twitter', 'crevette_sidebar_twitter', 'crevette_theme_settings', 'crevette_sidebar_options');
+  add_settings_field( 'sidebar-facebook', 'Compte Facebook', 'crevette_sidebar_facebook', 'crevette_theme_settings', 'crevette_sidebar_options');
+  add_settings_field( 'sidebar-devianart', 'Compte Deviant Art', 'crevette_sidebar_devianart', 'crevette_theme_settings', 'crevette_sidebar_options');
 }
 
 // Sanitization settings
@@ -51,29 +50,27 @@ function crevette_sanitize_twitter_account( $input ){
   return $output;
 }
 
-// Bunch of functions to display html
-function crevette_sidebar_devianart(){
-  $devianartAccount = esc_attr(get_option('devianart_account'));
-  echo '<input type="text" name"twitter_account" placeholder="Adresse Deviant Art" value="'.$devianartAccount.'">';
-  var_dump($devianartAccount);
+function crevette_sidebar_name(){
+  $full_name = esc_attr(get_option('site_url'));
+  echo '<input type="text" name"first_name" placeholder="Prénom" value="'. $full_name .'">';
 }
+function crevette_sidebar_twitter(){
+  $twitterAccount = esc_attr(get_option('sidebar-twitter'));
+  echo '<input type="text" name"twitter_account" placeholder="Compte Twitter" value="'.$twitterAccount.'">';
+  var_dump($twitterAccount);
+}
+// Bunch of functions to display html
 function crevette_sidebar_facebook(){
   $facebookAccount = esc_attr(get_option('facebook_account'));
   echo '<input type="text" name"twitter_account" placeholder="Adresse Facebook" value="'.$facebookAccount.'">';
   var_dump($facebookAccount);
 }
-function crevette_sidebar_twitter(){
-  $twitterAccount = esc_attr(get_option('twitter_account'));
-  echo '<input type="text" name"twitter_account" placeholder="Compte Twitter" value="'.$twitterAccount.'">';
-  var_dump($twitterAccount);
+function crevette_sidebar_devianart(){
+  $devianartAccount = esc_attr(get_option('devianart_account'));
+  echo '<input type="text" name"twitter_account" placeholder="Adresse Deviant Art" value="'.$devianartAccount.'">';
+  var_dump($devianartAccount);
 }
 function crevette_sidebar_options(){
   echo 'Paramétrer les options générales du Thème CrevetteRose';
-}
-function crevette_sidebar_name(){
-  $firstName = esc_attr(get_option('first_name'));
-  $lastName = esc_attr(get_option('last_name'));
-  echo '<input type="text" name"first_name" placeholder="Prénom" value="'.$firstName.'"> <input type="text" name"last_name" placeholder="Nom" value="'.$lastName.'">';
-  var_dump($firstName, $lastName);
 }
 ?>
