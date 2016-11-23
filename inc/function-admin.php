@@ -16,7 +16,7 @@
   add_action( 'admin_init', 'test_add_option' );
 
   function footer_message_theme_display(){
-    echo '<p>ok'.get_option('footer_message').'</p>'
+    echo '<p>ok'.get_option('footer_message').'</p>';
   }
 
 
